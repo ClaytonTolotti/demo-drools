@@ -1,0 +1,12 @@
+package com.clayton.drools.rules;
+
+import com.clayton.drools.obj.AnalyzesObj;
+
+rule "AnalistaPleno"
+	dialect "java"
+	when
+		>$rule : AnalyzesObj( employee.companyTime >= 31 , employee.role.id == $rule.roleTarget.id , employee.companyTime <= 36 )
+	then
+		>$rule.setValidate( true );
+		>$rule.setCompanyTimeTarget( Arrays.asList(31, 36) );
+end

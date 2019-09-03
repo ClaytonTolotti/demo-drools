@@ -1,0 +1,12 @@
+package com.clayton.drools.rules;
+
+import com.clayton.drools.obj.AnalyzesObj;
+
+rule "NotFoundRule"
+	dialect "java"
+	salience 0
+	when
+		>$analyze : AnalyzesObj( validate == null )
+	then
+		>$analyze.setValidate( false );
+end

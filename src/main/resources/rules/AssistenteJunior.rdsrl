@@ -1,0 +1,14 @@
+package com.clayton.drools.rules;
+
+import com.clayton.drools.obj.AnalyzesObj;
+import java.util.Arrays;
+
+rule "AssistenteJunior"
+	dialect "java"
+	salience 1
+	when
+		>$rule : AnalyzesObj( roleTarget.id == $rule.employee.id , employee.companyTime <= 12 , employee.companyTime >= 6 )
+	then
+		>$rule.setValidate( true );
+		>$rule.setCompanyTimeTarget( Arrays.asList(6,12) );
+end
